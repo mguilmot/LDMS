@@ -117,6 +117,9 @@ for pc in PCS:
                     elif soft in knownsoft or soft.startswith("Microsoft Office Proofing") or soft.startswith("Outils de ") or soft.startswith("Microsoft Visual C++"):
                         # MS proofing tools and C++
                         f.write("Found Proofing:" + soft + "\n")
+                    elif soft == "suitename":
+                        # Ignore table header
+                        continue
                     else:
                         # Finally the software we are interested in.
                         print("Found non standard soft:",soft)
@@ -128,6 +131,8 @@ for pc in PCS:
                 foundsoft = []
         
         s_checkedpcs[pc]=True
+        if len(foundsoft)==0:
+            foundsoft = ["No extra software"]
         s_foundsoft[pc]=foundsoft
         for soft in foundsoft:
             if soft not in s_allsoft:
