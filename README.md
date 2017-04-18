@@ -17,9 +17,11 @@ Uses:
 - requests_ntlm
 - csv
 - shelve
+- bs4
 
-Did not really bother making it the prettiest code or the most
-efficient, as we'll only need to run this every once in a while.
+Uses beautifulsoup to make things real easy.
 
-I was more interested in "spending a few hours to win many many 
-hours of lookup the same data over and over again."
+Before use, create following directories:
+- DB
+- EXCEL
+- LOG
