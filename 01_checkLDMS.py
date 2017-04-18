@@ -108,13 +108,43 @@ for pc in PCS:
                 for tr in trs:
                     tds = tr.find_all('td')
                     soft = tds[0].text
-                    if soft.startswith("Security Update for") or soft.startswith("Update for Microsoft") or soft.startswith("Service Pack") or "(KB" in soft:
+                    if soft.startswith("Security Update for") or soft.startswith("Update for Microsoft") or soft.startswith("Service Pack") or soft.startswith("Windows-stuurprogrammapakket") or "(KB" in soft:
                         # MS updates
                         f.write("Found MS:" + soft + "\n")
+                    elif soft.startswith("DWG TrueView"):
+                        soft = "DWG TrueView"
+                        foundsoft.append(soft)
+                        f.write("Found non standard software:" + soft + "\n")
+                    elif soft.startswith("Dräger CC-Vision"):
+                        soft = "Dräger CC-Vision"
+                        foundsoft.append(soft)
+                        f.write("Found non standard software:" + soft + "\n")
+                    elif soft.startswith("Bentley V8i") or soft.startswith("Bentley View V8i"):
+                        soft = "Bentley V8i"
+                        foundsoft.append(soft)
+                        f.write("Found non standard software:" + soft + "\n")
+                    elif soft.startswith("KeePass"):
+                        soft = "KeePass"
+                        foundsoft.append(soft)
+                        f.write("Found non standard software:" + soft + "\n")
+                    elif soft.startswith("Autodesk Navisworks Freedom"):
+                        soft = "Autodesk Navisworks Freedom"
+                        foundsoft.append(soft)
+                        f.write("Found non standard software:" + soft + "\n")
+                    elif soft.startswith("Belgium e-ID middleware"):
+                        soft = "Belgium e-ID middleware"
+                        foundsoft.append(soft)
+                        f.write("Found non standard software:" + soft + "\n")
+                    elif soft.startswith("Paint.NET") or soft.startswith("paint.net"):
+                        soft = "Paint.NET"
+                        foundsoft.append(soft)
+                        f.write("Found non standard software:" + soft + "\n")
+                    elif soft.startswith("Adobe Acrobat 9.5.4"):
+                        continue
                     elif soft.startswith("Lenovo"):
                         # Standard Lenovo software
                         f.write("Found Lenovo:" + soft + "\n")
-                    elif soft in knownsoft or soft.startswith("Microsoft Office Proofing") or soft.startswith("Outils de ") or soft.startswith("Microsoft Visual C++"):
+                    elif soft in knownsoft or soft.startswith("Microsoft Office Proofing") or soft.startswith("Outils de ") or soft.startswith("Microsoft Visual C++") or soft.startswith("Microsoft Office Language Pack 2010"):
                         # MS proofing tools and C++
                         f.write("Found Proofing:" + soft + "\n")
                     elif soft == "suitename":
